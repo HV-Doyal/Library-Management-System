@@ -7,6 +7,9 @@
     Updated: 29/12/2023
 */
 
+#include "librarian.h"
+#include "member.h"
+
 class Book
 {
 
