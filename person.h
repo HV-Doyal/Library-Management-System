@@ -12,23 +12,23 @@
 
 class Person
 {
-private:
-    std::string name;
-    std::string address;
-    std::string email;
+    private:
+        std::string name;
+        std::string address;
+        std::string email;
 
-public:
-    void setName(std::string nm);
+    public:
+        void setName(std::string nm);
 
-    std::string getName();
+        std::string getName();
 
-    void setAddress(std::string add);
+        void setAddress(std::string add);
 
-    std::string getAddress();
+        std::string getAddress();
 
-    void setEmail(std::string eml);
+        void setEmail(std::string eml);
 
-    std::string getEmail();
+        std::string getEmail();
 };
 
 #endif
