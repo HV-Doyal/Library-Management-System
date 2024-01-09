@@ -1,50 +1,34 @@
 #ifndef _PERSON_H_
 #define _PERSON_H_
+
 /*
     person.h
     Author: M00953762
     Created: 29/12/2023
-    Updated: 29/12/2023
+    Updated: 09/01/2023
 */
 
 #include <string>
 
 class Person
 {
-    private:
-        std::string name;
-        std::string address;
-        std::string email;
-    
-    public:
-        void setName(std::string nm)
-        {
-            name = nm;
-        }
-        std::string getName()
-        {
-            return name;
-        }
+private:
+    std::string name;
+    std::string address;
+    std::string email;
 
-        void setAddress(std::string add)
-        {
-            address = add;
-        }
+public:
+    void setName(std::string nm);
 
-        std::string getAddress()
-        {
-            return address;
-        }
+    std::string getName();
 
-        void setEmail(std::string eml)
-        {
-            email = eml;
-        }
+    void setAddress(std::string add);
 
-        std::string getEmail()
-        {
-            return email;
-        }
+    std::string getAddress();
+
+    void setEmail(std::string eml);
+
+    std::string getEmail();
 };
 
 #endif
