@@ -5,7 +5,7 @@
     person.h
     Author: M00953762
     Created: 29/12/2023
-    Updated: 09/01/2023
+    Updated: 10/01/2023
 */
 
 #include <string>
@@ -18,8 +18,9 @@ class Person
         std::string email;
 
     public:
-        void setName(std::string nm);
 
+        void setName(std::string nm);
+        
         std::string getName();
 
         void setAddress(std::string add);
