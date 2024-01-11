@@ -10,7 +10,7 @@
 #include "person.h"
 #include <vector>
 
-class Book
+class Book;
 
 class Member : public Person 
 {
@@ -27,6 +27,6 @@ class Member : public Person
         std::vector<Book>& getBooksBorrowed();
 
         void setBooksBorrowed(Book& book);
-}
+};
 
 #endif

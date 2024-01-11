@@ -2,7 +2,7 @@
     library.cpp
     Author: M00953762
     Created: 09/01/2023
-    Updated: 09/01/2023
+    Updated: 11/01/2023
 */
 
 // basics person class test
@@ -16,9 +16,9 @@ int main()
     // Test for person class
     Person person("Kratos", "Playstation", "god@war.com");
     std::cout << "\nNamed Person Information:" << std::endl;
-    std::cout << "Name: " << namedPerson.getName() << std::endl;
-    std::cout << "Address: " << namedPerson.getAddress() << std::endl;
-    std::cout << "Email: " << namedPerson.getEmail() << std::endl;
+    std::cout << "Name: " << person.getName() << std::endl;
+    std::cout << "Address: " << person.getAddress() << std::endl;
+    std::cout << "Email: " << person.getEmail() << std::endl;
 
     // Test for member class
     Member member(0001, "Kratos", "Playstation", "god@war.com");

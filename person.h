@@ -5,7 +5,7 @@
     person.h
     Author: M00953762
     Created: 29/12/2023
-    Updated: 10/01/2023
+    Updated: 11/01/2023
 */
 
 #include <string>

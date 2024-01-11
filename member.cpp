@@ -7,20 +7,24 @@
 #include "member.h"
 #include "book.h"  
 
-Member::Member(int memberID, std::string name, std::string address, std::string email)
-    : Person(name, address, email), memberID(memberID)
-
-int Member::getMemberID() const
+Member::Member(int memberID, std::string name, std::string address, 
+               std::string email) : Person(name, address, email), 
+               memberID(memberID)
 {
-    return memberID;
+
 }
 
-const std::vector<Book>& Member::getBooksBorrowed() const
+std::string Member::getMemberID()
+{
+    return std::to_string(memberID);
+}
+
+std::vector<Book>& Member::getBooksBorrowed() 
 {
     return booksLoaned;
 }
 
-void Member::setBooksBorrowed(const Book& book)
+void Member::setBooksBorrowed(Book& book)
 {
     booksLoaned.push_back(book);
 }
