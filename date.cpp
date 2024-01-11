@@ -5,24 +5,49 @@
     Updated: 11/01/2023
 */
 
-#include <iostream>
 #include "date.h"
 
-int main() 
+Date::Date(int day, int month, int year) 
 {
-    // Creating instances of the Date class
-    Date date1(13, 8, 2029);
-    Date date2(1, 12, 2026);
+    this->day = day;
+    this->month = month;
+    this->year = year;
+}
 
-    // Comparing dates
-    if (date1 < date2) 
+int Date::getDay() const 
+{ 
+    return day; 
+}
+
+int Date::getMonth() const 
+{ 
+    return month; 
+}
+
+int Date::getYear() const 
+{ 
+    return year; 
+}
+
+bool Date::operator<(const Date& other) const 
+{
+    if (year < other.getYear()) 
     {
-        std::cout << date1 << " is earlier than " << date2 << std::endl;
-    } 
-    else 
-    {
-        std::cout << date2 << " is earlier than " << date1 << std::endl;
+        return true;
     }
+    else if (year == other.getYear() && month < other.getMonth()) 
+    {
+        return true;
+    }
+    else if (year == other.getYear() && month == other.getMonth() && day < other.getDay()) 
+    {
+        return true;
+    }
+    return false;
+}
 
-    return 0;
+std::ostream& operator<<(std::ostream& out, const Date& date) 
+{
+    out << date.getDay() << '-' << date.getMonth() << '-' << date.getYear();
+    return out;
 }
