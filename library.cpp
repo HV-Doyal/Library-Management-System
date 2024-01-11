@@ -44,33 +44,63 @@ int menu()
     return choice;
 };
 
+void addMember()
+{
+
+};
+
+void issueBook()
+{
+
+};
+
+void returnBook()
+{
+
+};
+
+void displayBook()
+{
+
+};
+
+void calculateFine()
+{
+
+};
+
 void executeMenu(int opt)
 {
     system("clear"); //linux only
      if (opt == 1) 
      {
         std::cout << "Executing option 1: Add a member" << std::endl;
-        // Add member logic here
+        addMember();
+        main();
     } 
     else if (opt == 2) 
     {
         std::cout << "Executing option 2: Issue a book" << std::endl;
-        // Issue book logic here
+        /issueBook();
+        main();
     } 
     else if (opt == 3) 
     {
         std::cout << "Executing option 3: Return a book" << std::endl;
-        // Return book logic here
+        returnBook();
+        main();
     } 
     else if (opt == 4) 
     {
         std::cout << "Executing option 4: Display all books" << std::endl;
-        // Display books logic here
+        displayBook();
+        main();
     } 
     else if (opt == 5) 
     {
         std::cout << "Executing option 5: Calculate fine" << std::endl;
-        // Calculate fine logic here
+        /calculateFine();
+        main();
     } 
     else if (opt == 6) 
     {
