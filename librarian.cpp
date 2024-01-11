@@ -53,7 +53,7 @@ void Librarian::calcFine(int memberID)
     std::cout << "Calculating fine for member " << memberID << std::endl;
 }
 
-int Librarian::getStaffID() const
+int Librarian::getStaffID()
 {
     return staffID;
 }
@@ -63,7 +63,7 @@ void Librarian::setStaffID(int staffID)
     this->staffID = staffID;
 }
 
-int Librarian::getSalary() const
+int Librarian::getSalary()
 {
     return salary;
 }
