@@ -4,7 +4,7 @@
     member.h
     Author: M00953762
     Created: 29/12/2023
-    Updated: 07/01/2023
+    Updated: 11/01/2023
 */
 
 #include "person.h"
@@ -14,24 +14,19 @@ class Book
 
 class Member : public Person 
 {
-    private:
-        int memberId;
-        std::vector<Book*> borrowedBooks;
+   private:
+    int memberID;
+    std::vector<Book> booksLoaned;
 
     public:
-        Member(std::string name, std::string address, std::string email,
-               int memberId);
-        ~Member();
-        std::string getMemberID()
-        {
-            return memberId;
-        }
-        std::vector getBooksBorrowed()
-        {
-            return borrowedBooks;
-        }
-        void setBooksBorrowed(Book* book);
+        Member(int memberID, std::string name, std::string address,
+               std::string email);
 
-};
+        std::string getMemberID();
+
+        std::vector<Book>& getBooksBorrowed();
+
+        void setBooksBorrowed(Book& book);
+}
 
 #endif

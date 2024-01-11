@@ -20,5 +20,12 @@ int main()
     std::cout << "Address: " << namedPerson.getAddress() << std::endl;
     std::cout << "Email: " << namedPerson.getEmail() << std::endl;
 
+    // Test for member class
+    Member member(0001, "Kratos", "Playstation", "god@war.com");
+    std::cout << "Member ID: " << member.getMemberID() << std::endl;
+    std::cout << "Name: " << member.getName() << std::endl;
+    std::cout << "Address: " << member.getAddress() << std::endl;
+    std::cout << "Email: " << member.getEmail() << std::endl;
+
     return 0;
 }
