@@ -13,23 +13,6 @@
 #include <limits>
 #include <cstdlib>
 
-void clearConsole()
-{
-#ifdef _WIN32
-    // For Windows
-    system("cls");
-#elif __linux__
-    // For Linux
-    system("clear");
-#elif __APPLE__
-    // For macOS
-    system("clear");
-#else
-    // Unsupported platform
-    std::cout << "Console clearing not supported on this platform." << std::endl;
-#endif
-}
-
 int menu()
 {
     int choice;
@@ -63,7 +46,7 @@ int menu()
 
 void executeMenu(int opt)
 {
-    clearConsole();
+    system("clear"); //linux only
      if (opt == 1) 
      {
         std::cout << "Executing option 1: Add a member" << std::endl;
@@ -92,7 +75,7 @@ void executeMenu(int opt)
     else if (opt == 6) 
     {
         std::cout << "Exiting program" << std::endl;
-        exit(0);
+        system("exit");
     } 
 }
 
