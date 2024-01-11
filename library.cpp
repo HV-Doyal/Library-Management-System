@@ -9,21 +9,16 @@
 
 #include <iostream>
 #include "person.h"
+#include "member.h"
 
 int main()
 {
-    // Create a Person object
-    Person person;
-
-    // Set values using member functions
-    person.setName("Kratos");
-    person.setAddress("Playstation");
-    person.setEmail("god@war.com");
-
-    // Display information using member functions
-    std::cout << "Name: " << person.getName() << std::endl;
-    std::cout << "Address: " << person.getAddress() << std::endl;
-    std::cout << "Email: " << person.getEmail() << std::endl;
+    // Test for person class
+    Person person("Kratos", "Playstation", "god@war.com");
+    std::cout << "\nNamed Person Information:" << std::endl;
+    std::cout << "Name: " << namedPerson.getName() << std::endl;
+    std::cout << "Address: " << namedPerson.getAddress() << std::endl;
+    std::cout << "Email: " << namedPerson.getEmail() << std::endl;
 
     return 0;
 }

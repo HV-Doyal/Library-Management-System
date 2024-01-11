@@ -19,6 +19,8 @@ class Person
 
     public:
 
+        Person(std::string name, std::string address, std::string email);
+
         void setName(std::string nm);
         
         std::string getName();

@@ -7,6 +7,9 @@
 
 #include "person.h"
 
+Person::Person(std::string name, std::string address, std::string email)
+    : name(name), address(address), email(email) {}
+
 void Person::setName(std::string nm)
 {
     this->name = nm;
