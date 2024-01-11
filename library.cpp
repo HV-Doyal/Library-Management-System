@@ -27,5 +27,20 @@ int main()
     std::cout << "Address: " << member.getAddress() << std::endl;
     std::cout << "Email: " << member.getEmail() << std::endl;
 
+    // Test for librarian class
+    Librarian librarian(101, "Alice Librarian", "789 Main St", 
+                        "alice.librarian@example.com", 50000);
+    std::cout << "Staff ID: " << librarian.getStaffID() << std::endl;
+    std::cout << "Name: " << librarian.getName() << std::endl;
+    std::cout << "Address: " << librarian.getAddress() << std::endl;
+    std::cout << "Email: " << librarian.getEmail() << std::endl;
+    std::cout << "Salary: $" << librarian.getSalary() << std::endl;
+    librarian.addMember();
+    librarian.issueBook(1, 101);
+    librarian.issueBook(2, 102);
+    librarian.displayBorrowedBooks(1);
+    librarian.returnBook(1, 101);
+    librarian.calcFine(2);
+
     return 0;
 }
