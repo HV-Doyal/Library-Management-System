@@ -5,42 +5,46 @@
     Updated: 11/01/2023
 */
 
-// basics person class test
-
-#include <iostream>
 #include "person.h"
 #include "member.h"
+#include "librarian.h"
+#include "book.h"
+#include <iostream>
+#include <limits>
+
+
+int menu()
+{
+    int choice;
+
+    std::cout << "[1]Add a member" << std::endl;
+    std::cout << "[2]Issue a book" << std::endl;
+    std::cout << "[3]Return a book" << std::endl;
+    std::cout << "[4]Display all books" << std::endl;
+    std::cout << "[5]Calculate fine" << std::endl;
+    std::cout << "[6]Exit" << std::endl;
+
+    while (true) {
+        std::cout << "Select a number: ";
+
+        //validation
+        if (std::cin >> choice && choice >= 1 && choice <= 6) 
+        {
+            break;
+        } 
+        else 
+        {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter an integer between 1 and 6." 
+                      << std::endl;
+        }
+    }
+
+    return choice;
+};
 
 int main()
 {
-    // Test for person class
-    Person person("Kratos", "Playstation", "god@war.com");
-    std::cout << "\nNamed Person Information:" << std::endl;
-    std::cout << "Name: " << person.getName() << std::endl;
-    std::cout << "Address: " << person.getAddress() << std::endl;
-    std::cout << "Email: " << person.getEmail() << std::endl;
-
-    // Test for member class
-    Member member(0001, "Kratos", "Playstation", "god@war.com");
-    std::cout << "Member ID: " << member.getMemberID() << std::endl;
-    std::cout << "Name: " << member.getName() << std::endl;
-    std::cout << "Address: " << member.getAddress() << std::endl;
-    std::cout << "Email: " << member.getEmail() << std::endl;
-
-    // Test for librarian class
-    Librarian librarian(101, "Alice Librarian", "789 Main St", 
-                        "alice.librarian@example.com", 50000);
-    std::cout << "Staff ID: " << librarian.getStaffID() << std::endl;
-    std::cout << "Name: " << librarian.getName() << std::endl;
-    std::cout << "Address: " << librarian.getAddress() << std::endl;
-    std::cout << "Email: " << librarian.getEmail() << std::endl;
-    std::cout << "Salary: $" << librarian.getSalary() << std::endl;
-    librarian.addMember();
-    librarian.issueBook(1, 101);
-    librarian.issueBook(2, 102);
-    librarian.displayBorrowedBooks(1);
-    librarian.returnBook(1, 101);
-    librarian.calcFine(2);
-
-    return 0;
-}
+  std::cout << menu() << std::endl;
+};
