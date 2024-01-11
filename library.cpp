@@ -11,7 +11,24 @@
 #include "book.h"
 #include <iostream>
 #include <limits>
+#include <cstdlib>
 
+void clearConsole()
+{
+#ifdef _WIN32
+    // For Windows
+    system("cls");
+#elif __linux__
+    // For Linux
+    system("clear");
+#elif __APPLE__
+    // For macOS
+    system("clear");
+#else
+    // Unsupported platform
+    std::cout << "Console clearing not supported on this platform." << std::endl;
+#endif
+}
 
 int menu()
 {
@@ -44,7 +61,42 @@ int menu()
     return choice;
 };
 
+void executeMenu(int opt)
+{
+    clearConsole();
+     if (opt == 1) 
+     {
+        std::cout << "Executing option 1: Add a member" << std::endl;
+        // Add member logic here
+    } 
+    else if (opt == 2) 
+    {
+        std::cout << "Executing option 2: Issue a book" << std::endl;
+        // Issue book logic here
+    } 
+    else if (opt == 3) 
+    {
+        std::cout << "Executing option 3: Return a book" << std::endl;
+        // Return book logic here
+    } 
+    else if (opt == 4) 
+    {
+        std::cout << "Executing option 4: Display all books" << std::endl;
+        // Display books logic here
+    } 
+    else if (opt == 5) 
+    {
+        std::cout << "Executing option 5: Calculate fine" << std::endl;
+        // Calculate fine logic here
+    } 
+    else if (opt == 6) 
+    {
+        std::cout << "Exiting program" << std::endl;
+        exit(0);
+    } 
+}
+
 int main()
 {
-  std::cout << menu() << std::endl;
+  executeMenu(menu());
 };
