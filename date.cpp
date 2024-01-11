@@ -9,6 +9,14 @@
 
 Date::Date(int day, int month, int year) 
 {
+    if (day < 1 || day > 31 || month < 1 || month > 12 || year < 0) 
+    {
+        std::cerr << "Invalid date input. Setting default values." << std::endl;
+        day = 1;
+        month = 1;
+        year = 2000;
+    }
+
     this->day = day;
     this->month = month;
     this->year = year;
