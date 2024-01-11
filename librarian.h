@@ -16,6 +16,7 @@ class Librarian : public Person
     private:
         int staffID;
         int salary;
+        std::vector<int> borrowedBooks;
     public:
         Librarian(int staffID, std::string name, std::string address, 
                   std::string email, int salary);

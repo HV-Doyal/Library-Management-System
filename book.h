@@ -1,14 +1,11 @@
-#ifndef _BOOKS_H_
-#define _BOOKS_H_
+#ifndef _BOOK_H_
+#define _BOOK_H_
 /*
     book.h
     Author: M00953762
     Created: 29/12/2023
     Updated: 29/12/2023
 */
-
-#ifndef _BOOK_H_
-#define _BOOK_H_
 
 #include <string>
 #include "member.h"

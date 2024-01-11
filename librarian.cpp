@@ -5,6 +5,8 @@
     Updated: 09/01/2023
 */
 #include "librarian.h"
+#include "book.h"
+#include <algorithm>
 
 Librarian::Librarian(int staffID, std::string name, std::string address, 
                      std::string email, int salary) 
@@ -30,11 +32,12 @@ void Librarian::issueBook(int memberID, int bookID)
 void Librarian::returnBook(int memberID, int bookID)
 {
     // Implement return a book from a member
-    std::cout << "Returning book " << bookID << " from member " << memberID 
-                                   << std::endl;
-    // Remove the book from the borrowedBooks vector
-    borrowedBooks.erase(std::remove(borrowedBooks.begin(), borrowedBooks.end(), 
-                        bookID), borrowedBooks.end());
+// Find the iterator pointing to the bookID in borrowedBooks
+    std::vector<int>::iterator it = std::remove(borrowedBooks.begin(),
+                                    borrowedBooks.end(), bookID);
+
+    // Erase the elements between the iterator and end of vector
+    borrowedBooks.erase(it, borrowedBooks.end());
 }
 
 void Librarian::displayBorrowedBooks(int memberID)
