@@ -7,7 +7,7 @@ CXXFLAGS = -g -Wall -Wextra -Wpedantic
 all: library
 
 # Target to build the executable 'library' using object files
-library: person.o member.o librarian.o book.o library.o
+library: person.o member.o librarian.o book.o library.o date.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 # Target to build 'person.o' from its source file
@@ -30,8 +30,12 @@ book.o: book.cpp book.h member.h librarian.h
 library.o: library.cpp person.h member.h librarian.h book.h
 	$(CXX) $(CXXFLAGS) -c $<
 
+# Target to build 'date.o' from its source file
+date.o: date.cpp date.h
+	$(CXX) $(CXXFLAGS) -c $<
+
 # Phony target for cleaning up generated files
-.PHONY : clean
+.PHONY: clean
 clean:
 	$(RM) *.o    # Remove all object files
 	$(RM) library  # Remove the executable 'library'
