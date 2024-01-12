@@ -32,12 +32,17 @@ void Librarian::issueBook(int memberID, int bookID)
 void Librarian::returnBook(int memberID, int bookID)
 {
     // Implement return a book from a member
-// Find the iterator pointing to the bookID in borrowedBooks
+    // Find the iterator pointing to the bookID in borrowedBooks
     std::vector<int>::iterator it = std::remove(borrowedBooks.begin(),
                                     borrowedBooks.end(), bookID);
 
     // Erase the elements between the iterator and end of vector
     borrowedBooks.erase(it, borrowedBooks.end());
+
+    // Temporary use of memberID_temp
+    int memberID_temp = memberID;
+    std::cout << "Temporary use of memberID_temp: " << memberID_temp << std::endl;
+
 }
 
 void Librarian::displayBorrowedBooks(int memberID)

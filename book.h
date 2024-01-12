@@ -32,11 +32,11 @@ public:
     std::string getBookName();
     std::string getAuthorFirstName();
     std::string getAuthorLastName();
-    Date getDueDate();
+    Date* getDueDate();
 
-    void setDueDate(Date dueDate);
+    void setDueDate(Date* dueDate);
     void returnBook();
-    void borrowBook(Member *borrower, Date dueDate);
+    void borrowBook(Member* borrower, Date* dueDate);
 };
 
 #endif

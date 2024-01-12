@@ -15,32 +15,32 @@ Book::Book(int bookID, std::string bookName, std::string authorFirstName,
 {
 }
 
-int Book::getBookID() const
+int Book::getBookID() 
 {
     return bookID;
 }
 
-std::string Book::getBookName() const
+std::string Book::getBookName() 
 {
     return bookName;
 }
 
-std::string Book::getAuthorFirstName() const
+std::string Book::getAuthorFirstName() 
 {
     return authorFirstName;
 }
 
-std::string Book::getAuthorLastName() const
+std::string Book::getAuthorLastName() 
 {
     return authorLastName;
 }
 
-Date Book::getDueDate() const
+Date* Book::getDueDate() 
 {
     return dueDate;
 }
 
-void Book::setDueDate(const Date& dueDate)
+void Book::setDueDate(Date* dueDate)
 {
     this->dueDate = dueDate;
 }
@@ -60,14 +60,14 @@ void Book::returnBook()
     }
 }
 
-void Book::borrowBook(Member* borrower, const Date& dueDate)
+void Book::borrowBook(Member* borrower, Date* dueDate)
 {
     if (this->borrower == nullptr)
     {
         this->borrower = borrower;
         this->dueDate = dueDate;
         std::cout << borrower->getName() << " borrowed book " << bookID
-                  << " with due date " << dueDate << std::endl;
+                  << " with due date " << *dueDate << std::endl;
     }
     else
     {
