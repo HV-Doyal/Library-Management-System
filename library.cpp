@@ -2,7 +2,7 @@
     library.cpp
     Author: M00953762
     Created: 09/01/2023
-    Updated: 11/01/2023
+    Updated: 12/01/2023
 */
 
 #include <iostream>
@@ -48,10 +48,57 @@ int menu()
     return choice;
 };
 
-void addMember()
+void addMember(std::vector<Member>& members)
 {
+    int memberID;
+    std::string name, address, email;
 
-};
+    std::cout << "Enter Member ID: ";
+    std::cin >> memberID;
+
+    std::cout << "Enter Name: ";
+    std::cin.ignore();  // Clear the newline character from the buffer
+    std::getline(std::cin, name);
+
+    std::cout << "Enter Address: ";
+    std::getline(std::cin, address);
+
+    std::cout << "Enter Email: ";
+    std::getline(std::cin, email);
+
+    Member newMember(memberID, name, address, email);
+    members.push_back(newMember);
+
+    std::cout << "Member added successfully!\n";
+}
+
+void printMemberByID(std::vector<Member>& members, int targetMemberID)
+{
+    for (Member& member : members)
+    {
+        if (std::stoi(member.getMemberID()) == targetMemberID)
+        {
+            std::cout << "Member ID: " << member.getMemberID() << std::endl;
+            std::cout << "Name: " << member.getName() << std::endl;
+            std::cout << "Address: " << member.getAddress() << std::endl;
+            std::cout << "Email: " << member.getEmail() << std::endl;
+
+            // Print borrowed books if needed
+            std::cout << "Books Borrowed: ";
+            std::vector<Book>& borrowedBooks = member.getBooksBorrowed();
+            for (Book& book : borrowedBooks)
+            {
+                std::cout << book.getBookName() << ", ";
+            }
+            std::cout << std::endl;
+
+            return;
+        }
+    }
+
+    // If the member with the specified ID is not found
+    std::cout << "Member with ID " << targetMemberID << " not found.\n";
+}
 
 void issueBook()
 {
@@ -156,10 +203,11 @@ void calculateFine()
 
 void executeMenu(int opt)
 {
+    std::vector<Member> members;
     if (opt == 1) 
     {
         std::cout << "Executing option 1: Add a member" << std::endl;
-        addMember();
+        addMember(members);
     } 
     else if (opt == 2) 
     {
@@ -191,7 +239,19 @@ void executeMenu(int opt)
 
 int main()
 {
+
+    std::vector<Member> members;
+
   //executeMenu(menu());
-  displayBook();
-  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  //displayBook();
+  //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  addMember(members);
+
+  int targetMemberID;
+    std::cout << "Enter Member ID to print: ";
+    std::cin >> targetMemberID;
+
+    printMemberByID(members, targetMemberID);
+
+  return 0;
 };
