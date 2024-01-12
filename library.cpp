@@ -148,6 +148,7 @@ void displayBook()
     // Close the file after using it
     inputFile.close();
 }
+
 void calculateFine()
 {
 
@@ -172,7 +173,8 @@ void executeMenu(int opt)
     } 
     else if (opt == 4) 
     {
-        std::cout << "Executing option 4: Display all books" << std::endl;
+        std::cout << "Executing option 4: Display all books borrowed by a member" 
+                  << std::endl;
         displayBook();
     } 
     else if (opt == 5) 
