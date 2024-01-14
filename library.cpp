@@ -197,10 +197,44 @@ void issueBook(std::vector<Member>& members, std::vector<Book>& books)
     }
 }
 
-void returnBook()
+void returnBook(std::vector<Member>& members)
 {
+    int memberId, bookId;
 
-};
+    std::cout << "Enter Member ID and Book ID: ";
+    std::cin >> memberId >> bookId;
+
+    bool memberFound = false;
+    bool bookFound = false;
+
+    for (size_t i = 0; i < members.size(); ++i)
+    {
+        if (std::stoi(members[i].getMemberID()) == memberId)
+        {
+            for (size_t j = 0; j < members[i].getBooksBorrowed().size(); ++j)
+            {
+                if (members[i].getBooksBorrowed()[j].getBookID() == bookId)
+                {
+                    // Book found, remove it from the member's list
+                    members[i].returnBook(bookId);
+                    bookFound = true;
+                }
+            }
+
+            if (!bookFound)
+            {
+                std::cout << "Book not issued to the member." << std::endl;
+            }
+
+            memberFound = true;
+        }
+    }
+
+    if (!memberFound)
+    {
+        std::cout << "Member not found." << std::endl;
+    }
+}
 
 void displayBook(std::vector<Member>& members)
 {
@@ -248,12 +282,12 @@ void executeMenu(int opt, std::vector<Member>& members, std::vector<Book>& books
     else if (opt == 2) 
     {
         std::cout << "Executing option 2: Issue a book" << std::endl;
-        issueBook(members, books); // Pass the books vector to the function
+        issueBook(members, books);
     } 
     else if (opt == 3) 
     {
         std::cout << "Executing option 3: Return a book" << std::endl;
-        returnBook();
+        returnBook(members);
     } 
     else if (opt == 4) 
     {

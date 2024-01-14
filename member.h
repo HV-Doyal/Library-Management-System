@@ -9,6 +9,7 @@
 
 #include "person.h"
 #include <vector>
+#include <algorithm>
 
 class Book;
 
@@ -27,6 +28,8 @@ class Member : public Person
         std::vector<Book>& getBooksBorrowed();
 
         void setBooksBorrowed(Book& book);
+
+        void returnBook(int bookId);
 };
 
 #endif
