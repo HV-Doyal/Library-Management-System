@@ -1,0 +1,5 @@
+LINK: 
+https://bitbucket.org/hvd-mdx/cst2550-coursework_1/
+
+Repository Access Token:
+git clone https://x-token-auth:ATCTT3xFfGN0blNFIA48eh5qhaL3F-0NjmTpNak2aTbOTD9uCUY1J9oh177oTeM91zb2Q5oEFJG1n9yURNZRNT7dfhzIvRvCUG32kcuYPkasG9GCfBBnhtk_71hJy37WwKjB7d9vFOAK-opxfELfABizXNUZ5TVaRqZcM-Jd4YFN8366xQcgC9s=0B100A88@bitbucket.org/hvd-mdx/cst2550-coursework_1.git
