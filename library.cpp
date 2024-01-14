@@ -2,7 +2,7 @@
     library.cpp
     Author: M00953762
     Created: 09/01/2023
-    Updated: 12/01/2023
+    Updated: 14/01/2023
 */
 
 #include <iostream>
@@ -75,26 +75,6 @@ std::vector<Book> loadBooks()
         else 
         {
             std::cerr << "Invalid line format: " << line << std::endl;
-        }
-    }
-
-    // Example: Print book information using only the ID
-    int searchID;
-    std::cout << "Enter the Book ID to search: ";
-    std::cin >> searchID;
-
-    // Search for the book with the specified ID
-    for (size_t i = 0; i < books.size(); ++i) 
-    {
-        if (books[i].getBookID() == searchID) 
-        {
-            // Print book information
-            std::cout << "Book Information:" << std::endl;
-            std::cout << "ID: " << books[i].getBookID() << std::endl;
-            std::cout << "Name: " << books[i].getBookName() << std::endl;
-            std::cout << "Author: " << books[i].getAuthorFirstName() << " " 
-                      << books[i].getAuthorLastName() << std::endl;
-            break;
         }
     }
 
