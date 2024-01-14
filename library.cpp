@@ -215,11 +215,13 @@ void displayBook(std::vector<Member>& members)
             std::cout << "Member ID: " << member.getMemberID() << std::endl;
             std::cout << "Name: " << member.getName() << std::endl;
 
-            std::cout << "Books Borrowed: ";
+            std::cout << "Books Borrowed: "<< std::endl;
             std::vector<Book>& borrowedBooks = member.getBooksBorrowed();
             for (Book& book : borrowedBooks)
             {
-                std::cout << book.getBookName() << ", ";
+                std::cout << "Books ID "<< book.getBookID() << std::endl;
+                std::cout << book.getBookName() << std::endl;
+                std::cout << "***********************************" << std::endl;
             }
             std::cout << std::endl;
 
