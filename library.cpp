@@ -17,101 +17,9 @@
 #include "book.h"
 
 
-int menu()
+std::vector<Book> loadBooks()
 {
-    int choice;
-
-    std::cout << "[1]Add a member" << std::endl;
-    std::cout << "[2]Issue a book" << std::endl;
-    std::cout << "[3]Return a book" << std::endl;
-    std::cout << "[4]Display all books" << std::endl;
-    std::cout << "[5]Calculate fine" << std::endl;
-    std::cout << "[6]Exit" << std::endl;
-
-    while (true) {
-        std::cout << "Select a number: ";
-
-        //validation
-        if (std::cin >> choice && choice >= 1 && choice <= 6) 
-        {
-            break;
-        } 
-        else 
-        {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid input. Please enter an integer between 1 and 6." 
-                      << std::endl;
-        }
-    }
-
-    return choice;
-};
-
-void addMember(std::vector<Member>& members)
-{
-    int memberID;
-    std::string name, address, email;
-
-    std::cout << "Enter Member ID: ";
-    std::cin >> memberID;
-
-    std::cout << "Enter Name: ";
-    std::cin.ignore();  // Clear the newline character from the buffer
-    std::getline(std::cin, name);
-
-    std::cout << "Enter Address: ";
-    std::getline(std::cin, address);
-
-    std::cout << "Enter Email: ";
-    std::getline(std::cin, email);
-
-    Member newMember(memberID, name, address, email);
-    members.push_back(newMember);
-
-    std::cout << "Member added successfully!\n";
-}
-
-void printMemberByID(std::vector<Member>& members, int targetMemberID)
-{
-    for (Member& member : members)
-    {
-        if (std::stoi(member.getMemberID()) == targetMemberID)
-        {
-            std::cout << "Member ID: " << member.getMemberID() << std::endl;
-            std::cout << "Name: " << member.getName() << std::endl;
-            std::cout << "Address: " << member.getAddress() << std::endl;
-            std::cout << "Email: " << member.getEmail() << std::endl;
-
-            // Print borrowed books if needed
-            std::cout << "Books Borrowed: ";
-            std::vector<Book>& borrowedBooks = member.getBooksBorrowed();
-            for (Book& book : borrowedBooks)
-            {
-                std::cout << book.getBookName() << ", ";
-            }
-            std::cout << std::endl;
-
-            return;
-        }
-    }
-
-    // If the member with the specified ID is not found
-    std::cout << "Member with ID " << targetMemberID << " not found.\n";
-}
-
-void issueBook()
-{
-
-};
-
-void returnBook()
-{
-
-};
-
-void displayBook()
-{
+    std::vector<Book> books;
     bool validFileOpened = false;
     std::string filePath;
 
@@ -134,8 +42,6 @@ void displayBook()
                       << std::endl;
         }
     }
-
-    std::vector<Book> books;
 
     std::string line;
     // Read and discard the first line (header)
@@ -194,6 +100,135 @@ void displayBook()
 
     // Close the file after using it
     inputFile.close();
+    return books;
+};
+
+int menu()
+{
+    int choice;
+
+    std::cout << "[1]Add a member" << std::endl;
+    std::cout << "[2]Issue a book" << std::endl;
+    std::cout << "[3]Return a book" << std::endl;
+    std::cout << "[4]Display all books" << std::endl;
+    std::cout << "[5]Calculate fine" << std::endl;
+    std::cout << "[6]Exit" << std::endl;
+
+    while (true) {
+        std::cout << "Select a number: ";
+
+        //validation
+        if (std::cin >> choice && choice >= 1 && choice <= 6) 
+        {
+            break;
+        } 
+        else 
+        {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter an integer between 1 and 6." 
+                      << std::endl;
+        }
+    }
+
+    return choice;
+};
+
+void addMember(std::vector<Member>& members)
+{
+    int memberID;
+    std::string name, address, email;
+
+    std::cout << "Enter Member ID: ";
+    std::cin >> memberID;
+
+    std::cout << "Enter Name: ";
+    std::cin.ignore();  // Clear the newline character from the buffer
+    std::getline(std::cin, name);
+
+    std::cout << "Enter Address: ";
+    std::getline(std::cin, address);
+
+    std::cout << "Enter Email: ";
+    std::getline(std::cin, email);
+
+    Member newMember(memberID, name, address, email);
+    members.push_back(newMember);
+
+    std::cout << "Member added successfully!\n";
+}
+
+void issueBook(std::vector<Member>& members, std::vector<Book>& books)
+{
+    int memberId, bookId;
+
+    std::cout << "Enter Member ID and Book ID: ";
+    std::cin >> memberId >> bookId;
+
+    bool memberFound = false;
+    bool bookFound = false;
+
+    for (Member& member : members)
+    {
+        if (std::stoi(member.getMemberID()) == memberId)
+        {
+            for (Book& book : books)
+            {
+                if (book.getBookID() == bookId)
+                {
+                    member.setBooksBorrowed(book);
+                    bookFound = true;
+                    break;
+                }
+            }
+
+            if (!bookFound)
+            {
+                std::cout << "Book not found." << std::endl;
+            }
+
+            memberFound = true;
+        }
+    }
+
+    if (!memberFound)
+    {
+        std::cout << "Member not found." << std::endl;
+    }
+}
+
+void returnBook()
+{
+
+};
+
+void displayBook(std::vector<Member>& members)
+{
+    int memberId;
+    std::cout << "Enter Member ID: ";
+    std::cin >> memberId;
+
+    for (Member& member : members)
+    {
+        if (std::stoi(member.getMemberID()) == memberId)
+        {
+            std::cout << "Member ID: " << member.getMemberID() << std::endl;
+            std::cout << "Name: " << member.getName() << std::endl;
+
+            std::cout << "Books Borrowed: ";
+            std::vector<Book>& borrowedBooks = member.getBooksBorrowed();
+            for (Book& book : borrowedBooks)
+            {
+                std::cout << book.getBookName() << ", ";
+            }
+            std::cout << std::endl;
+
+            return;
+        }
+    }
+
+    // If the member with the specified ID is not found
+    std::cout << "Member with ID " << memberId << " not found.\n";
 }
 
 void calculateFine()
@@ -201,9 +236,8 @@ void calculateFine()
 
 };
 
-void executeMenu(int opt)
+void executeMenu(int opt, std::vector<Member>& members, std::vector<Book>& books)
 {
-    std::vector<Member> members;
     if (opt == 1) 
     {
         std::cout << "Executing option 1: Add a member" << std::endl;
@@ -212,7 +246,7 @@ void executeMenu(int opt)
     else if (opt == 2) 
     {
         std::cout << "Executing option 2: Issue a book" << std::endl;
-        issueBook();
+        issueBook(members, books); // Pass the books vector to the function
     } 
     else if (opt == 3) 
     {
@@ -223,7 +257,7 @@ void executeMenu(int opt)
     {
         std::cout << "Executing option 4: Display all books borrowed by a member" 
                   << std::endl;
-        displayBook();
+        displayBook(members);
     } 
     else if (opt == 5) 
     {
@@ -241,17 +275,12 @@ int main()
 {
 
     std::vector<Member> members;
+    std::vector<Book> books = loadBooks();
 
-  //executeMenu(menu());
-  //displayBook();
-  //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-  addMember(members);
+    while (true) 
+    {
+        executeMenu(menu(), members, books);
+    };
 
-  int targetMemberID;
-    std::cout << "Enter Member ID to print: ";
-    std::cin >> targetMemberID;
-
-    printMemberByID(members, targetMemberID);
-
-  return 0;
+    return 0;
 };
