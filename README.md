@@ -1,7 +1,3 @@
-Sure, here's a README file for the "LibraryManagementSystem" code repository:
-
----
-
 # Library Management System
 
 This repository contains a C++ program for a simple library management system. The program allows users to perform various tasks related to library management, such as adding members, issuing and returning books, displaying borrowed books, and calculating fines.
